@@ -7,10 +7,9 @@ import (
 	"time"
 
 	"github.com/golang/protobuf/ptypes"
+	v1 "github.com/laughtt/chatGrpc/pkg/api/v1"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-
-	"github.com/laughtt/chatGrpc/proto/api/v1"
 )
 
 const (
