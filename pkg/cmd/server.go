@@ -6,7 +6,7 @@ import (
 	"flag"
 	"fmt"
 
-	grpc "github.com/laughtt/chatGrpc/pkg/protocol/grpc"
+	"github.com/laughtt/chatGrpc/pkg/protocol/grpc"
 	v1 "github.com/laughtt/chatGrpc/pkg/service/v1"
 )
 
