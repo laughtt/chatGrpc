@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/laughtt/chatGrpc/pkg/cmd"
+	cmd "github.com/laughtt/chatGrpc/pkg/cmd/"
 )
 
 func main() {
