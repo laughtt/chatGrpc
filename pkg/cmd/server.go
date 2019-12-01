@@ -16,7 +16,7 @@ type Config struct {
 	// gRPC is TCP port to listen by gRPC server
 	GRPCPort string
 
-	// DB Datastore parameters section
+	// DB Datastore parameters selsction
 	// DatastoreDBHost is host of database
 	DatastoreDBHost string
 	// DatastoreDBUser is username to connect to database
