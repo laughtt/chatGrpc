@@ -7,6 +7,8 @@ import (
 	"fmt"
 
 	v1 "github.com/laughtt/chatGrpc/pkg/service/v1"
+
+	"github.com/laughtt/chatGrpc/pkg/protocol/grpc"
 )
 
 // Config is configuration for Server
