@@ -1,0 +1,3 @@
+protoc -I. -I$GO_PATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis -I$GO_PATH/src/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger --go_out=plugins=grpc:pkg/api/v1 todo-service.proto
+protoc -I. -I$GO_PATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis -I$GO_PATH/src/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger --grpc-gateway_out=logtostderr=true:pkg/api/v1 todo-service.proto
+protoc -I. -I$GO_PATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis -I$GO_PATH/src/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger --swagger_out=logtostderr=true:api/swagger/v1 todo-service.proto

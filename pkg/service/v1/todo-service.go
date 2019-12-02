@@ -4,12 +4,12 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	"time"
-
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/golang/protobuf/ptypes"
 	v1 "github.com/laughtt/chatGrpc/pkg/api/v1"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"time"
 )
 
 const (

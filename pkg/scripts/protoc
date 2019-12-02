@@ -1,0 +1,1 @@
+protoc -I. -I$GO_PATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis -I$GO_PATH/src/github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger --go_out=plugins=grpc:. api/proto/v1/service.proto

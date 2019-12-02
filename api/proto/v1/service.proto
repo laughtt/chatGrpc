@@ -2,6 +2,34 @@ syntax = "proto3";
 package v1;
 
 import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+import "protoc-gen-swagger/options/annotations.proto";
+
+option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
+	info: {
+		title: "ToDo service";
+		version: "1.0";
+		contact: {
+			name: "go-grpc-p";
+			url: "https://github.com/laughtt/chatGrpc";
+			email: "jcarpioherrera@gmail.com";
+        };
+    };
+    schemes: HTTP;
+    consumes: "application/json";
+    produces: "application/json";
+    responses: {
+		key: "404";
+		value: {
+			description: "Returned when the resource does not exist.";
+			schema: {
+				json_schema: {
+					type: STRING;
+				}
+			}
+		}
+	}
+};
 
 message ToDo {
     int64 id = 1;
@@ -42,39 +70,31 @@ message CreateRequest{
      ToDo toDo = 2;
  }
  message UpdateRequest{
-     // API versioning: it is my best practice to specify version explicitly
      string api = 1;
  
-     // Task entity to update
      ToDo toDo = 2;
  }
  
- // Contains status of update operation
  message UpdateResponse{
-     // API versioning: it is my best practice to specify version explicitly
      string api = 1;
  
-     // Contains number of entities have beed updated
-     // Equals 1 in case of succesfull update
+     // Es 1 si el update es exitoso
      int64 updated = 2;
  }
  
- // Request data to delete todo task
+ // Data para borar el delete task
  message DeleteRequest{
-     // API versioning: it is my best practice to specify version explicitly
      string api = 1;
  
-     // Unique integer identifier of the todo task to delete
+     // Identificador del todo task para borrar
      int64 id = 2;
  }
  
- // Contains status of delete operation
  message DeleteResponse{
-     // API versioning: it is my best practice to specify version explicitly
      string api = 1;
  
-     // Contains number of entities have beed deleted
-     // Equals 1 in case of succesfull delete
+     // Contiene la cantidad de filas borradas
+     // Es igual a 1 si funciona
      int64 deleted = 2;
  }
  
@@ -86,27 +106,53 @@ message CreateRequest{
  
  // Contains list of all todo tasks
  message ReadAllResponse{
-     // API versioning: it is my best practice to specify version explicitly
      string api = 1;
  
-     // List of all todo tasks
+     // Lista de todos los task
      repeated ToDo toDos = 2;
  }
  
- // Service to manage list of todo tasks
+ // Servicios
  service ToDoService {
-     // Create new todo task
-     rpc Create(CreateRequest) returns (CreateResponse);
+     // Crea todo
+     rpc Create(CreateRequest) returns (CreateResponse){
+        option (google.api.http) = {
+            post: "/v1/todo"
+            body: "*"
+        };
+     }
  
-     // Read todo task
-     rpc Read(ReadRequest) returns (ReadResponse);
+     // Lee todo
+     rpc Read(ReadRequest) returns (ReadResponse){
+        option (google.api.http) = {
+            get: "/v1/todo/{id}"
+        };
+     }
  
-     // Update todo task
-     rpc Update(UpdateRequest) returns (UpdateResponse);
+     // upgrade todo
+     rpc Update(UpdateRequest) returns (UpdateResponse){
+        option (google.api.http) = {
+            put: "/v1/todo/{toDo.id}"
+            body: "*"
+
+            additional_bindings {
+                patch: "/v1/todo/{toDo.id}"
+                body: "*"
+            }
+        };
+     }
  
-     // Delete todo task
-     rpc Delete(DeleteRequest) returns (DeleteResponse);
+     // Borra todo
+     rpc Delete(DeleteRequest) returns (DeleteResponse){
+        option (google.api.http) = {
+            delete: "/v1/todo/{id}"
+        };
+     }
  
-     // Read all todo tasks
-     rpc ReadAll(ReadAllRequest) returns (ReadAllResponse);
+     // Lee todo
+     rpc ReadAll(ReadAllRequest) returns (ReadAllResponse){
+        option (google.api.http) = {
+            get :"/v1/todo"
+        };
+     }
  }
