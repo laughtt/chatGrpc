@@ -2,16 +2,16 @@ syntax = "proto3";
 package v1;
 
 import "google/protobuf/timestamp.proto";
-import "google/api/annotations.proto";
 import "protoc-gen-swagger/options/annotations.proto";
+import "google/api/annotations.proto";
 
 option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
 	info: {
 		title: "ToDo service";
 		version: "1.0";
 		contact: {
-			name: "go-grpc-p";
-			url: "https://github.com/laughtt/chatGrpc";
+			name: "go-grpc-http-rest-microservice-tutorial project";
+			url: "github.com/laughtt/chatGrpc";
 			email: "jcarpioherrera@gmail.com";
         };
     };
