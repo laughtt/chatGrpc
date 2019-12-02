@@ -9,9 +9,8 @@ import (
 	"time"
 
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
-	"google.golang.org/grpc"
-
 	v1 "github.com/laughtt/chatGrpc/pkg/api/v1"
+	"google.golang.org/grpc"
 )
 
 // RunServer runs HTTP/REST gateway
